@@ -26,6 +26,7 @@ app.use('/api/v1/products', require('./routes/products'));
 app.use('/api/v1/categories', require('./routes/categories'));
 app.use('/api/v1/auth', require('./routes/auth'));
 app.use('/api/v1/carts', require('./routes/carts'));
+app.use('/api/v1/upload', require('./routes/upload'));
 //connect
 mongoose.connect('mongodb://localhost:27017/NNPTUD-S4');
 mongoose.connection.on('connected', function () {
