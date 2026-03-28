@@ -53,4 +53,13 @@ app.use(function (err, req, res, next) {
   res.send(err.message);
 });
 
+const Role = require('./schemas/roles'); // Đường dẫn đúng tới file roles.js
+
+mongoose.connection.once('open', async () => {
+  const userRole = await Role.findOne({ name: 'user' });
+  if (!userRole) {
+    await Role.create({ name: 'user', description: 'Người dùng thông thường', isDeleted: false });
+    console.log('Đã tạo role "user"');
+  }
+});
 module.exports = app;
